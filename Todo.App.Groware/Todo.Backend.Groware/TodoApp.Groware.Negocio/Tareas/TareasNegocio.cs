@@ -62,5 +62,48 @@ namespace TodoApp.Groware.Negocio.Tareas
             return response;
 
         }
+
+        public Response<TareaSalidaDto> ModificarTarea(ModificarTareaDto tarea) 
+        {
+            var response = new Response<TareaSalidaDto>();
+
+            try 
+            {
+                var tareaModificada = _unitOfWork.Tareas.ModificarTarea(tarea);
+                response.Data = tareaModificada;
+                if (response.Data != null)
+                {
+                    response.IsSuccess = true;
+                    response.Message = "Tarea modificada exitosamente";
+                }
+            }
+            catch (Exception e)
+            {
+                response.Message = e.Message;
+            }
+            return response;
+        }
+
+        public Response<bool> EliminarTarea(int id) 
+        {
+            var response = new Response<bool>();
+
+            try
+            {
+                var result = _unitOfWork.Tareas.EliminarTarea(id);
+                response.Data = result;
+                
+                if (response.Data != null)
+                {
+                    response.IsSuccess = true;
+                    response.Message = "Tarea eliminada exitosamente";
+                }
+            }
+            catch (Exception e)
+            {
+                response.Message = e.Message;
+            }
+            return response;
+        }
     }
 }

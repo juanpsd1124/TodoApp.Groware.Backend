@@ -14,5 +14,9 @@ namespace TodoApp.Groware.Negocio.Tareas
         Response<IEnumerable<TareaSalidaDto>> ObtenerMovimientos();
         Response<TareaSalidaDto> AgregarTarea(Tarea tarea);
 
+        Response<TareaSalidaDto> ModificarTarea(ModificarTareaDto tarea);
+
+        Response<bool> EliminarTarea(int id);
+
     }
 }

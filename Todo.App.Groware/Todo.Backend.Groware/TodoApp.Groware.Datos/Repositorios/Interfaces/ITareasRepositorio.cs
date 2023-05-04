@@ -14,9 +14,9 @@ namespace TodoApp.Groware.Datos.Repositorios.Interfaces
 
         public TareaSalidaDto AgregarTarea(Tarea tarea);
 
-        //public TareaSalidaDto ModificarTarea(Tarea tarea);
+        public TareaSalidaDto ModificarTarea(ModificarTareaDto tarea);
 
-        //public bool ElminarTarea(string idTarea);
+        public bool EliminarTarea(int idTarea);
 
     }
 }

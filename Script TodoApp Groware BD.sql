@@ -81,6 +81,19 @@ AS
 		   duracionTipo = @duracionTipo,
 		   fechaInicio = @fechaInicio,
 		   fechaFinal = @fechaFinal  WHERE @idTarea = idTarea
+
+	SELECT Tareas.idTarea, 
+		   Tareas.tituloTarea AS Titulo, 
+		   Tareas.descripcionTarea AS Descripcion, 
+		   Tareas.responsableTarea AS Responsable, 
+		   Estados.descripcionEstado AS Estado, 
+		   Tareas.duracionNum,
+		   Tareas.duracionTipo,
+		   --CONCAT(Tareas.duracionNum, ' ' , Tareas.duracionTipo) AS Duracion,
+		   Tareas.fechaInicio AS FechaInicio,
+		   Tareas.fechaFinal AS FechaFinal
+	FROM Tareas
+	INNER JOIN Estados ON Tareas.estadoTarea = Estados.idEstado WHERE idTarea = @idTarea
 GO
 
 -- EXEC ModificarTarea 1,'Titulo Modificado', 'Descripcion Modificada', 'Juan', 2, 32, 'Horas', '2023-05-04 12:00:00' , '2023-05-04 18:00:00' 

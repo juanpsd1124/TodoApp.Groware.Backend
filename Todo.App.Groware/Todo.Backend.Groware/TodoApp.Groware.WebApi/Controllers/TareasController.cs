@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading;
+using TodoApp.Groware.DtoModel;
 using TodoApp.Groware.Entidades;
 using TodoApp.Groware.Negocio.Tareas;
 
@@ -11,30 +13,30 @@ namespace TodoApp.Groware.WebApi.Controllers
     {
         private readonly ITareasNegocio _tareasNegocio;
 
-        public TareasController(ITareasNegocio tareasNegocio) 
+        public TareasController(ITareasNegocio tareasNegocio)
         {
-            _tareasNegocio = tareasNegocio; 
+            _tareasNegocio = tareasNegocio;
         }
 
         [HttpGet("ObtenerTareas")]
         public IActionResult ObtenerTareas()
-        { 
+        {
             var response = _tareasNegocio.ObtenerMovimientos();
             if (response.IsSuccess) { return Ok(response); }
 
             return BadRequest(response.Message);
-        
+
         }
 
         [HttpPost("AgregarTarea")]
         public IActionResult ObtenerTareas([FromBody] Tarea tarea)
         {
-            if (tarea == null) 
-            { 
-                return BadRequest(); 
+            if (tarea == null)
+            {
+                return BadRequest();
             }
             var response = _tareasNegocio.AgregarTarea(tarea);
-            
+
             if (response.IsSuccess)
             {
                 return Ok(response);
@@ -42,7 +44,37 @@ namespace TodoApp.Groware.WebApi.Controllers
             return BadRequest(response.Message);
         }
 
+        [HttpPost("ModificarTarea")]
+        public IActionResult ObtenerTareas([FromBody] ModificarTareaDto tarea)
+        {
+            if (tarea == null)
+            {
+                return BadRequest();
+            }
+            var response = _tareasNegocio.ModificarTarea(tarea);
 
+            if (response.IsSuccess)
+            {
+                return Ok(response);
+            }
+            return BadRequest(response.Message);
 
+        }
+
+        [HttpPost("EliminarTarea/{idTarea}")]
+        public IActionResult EliminarTarea(string idTarea) 
+        {
+            if (idTarea == null)
+            {
+                return BadRequest();
+            }
+            var response = _tareasNegocio.EliminarTarea( int.Parse(idTarea) );
+
+            if (response.IsSuccess)
+            {
+                return Ok(response);
+            }
+            return BadRequest(response.Message);
+        }
     }
 }
