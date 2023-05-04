@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TodoApp.Groware.Datos\TodoApp.Groware.Datos.csproj" />
+    <ProjectReference Include="..\TodoApp.Groware.DtoModel\TodoApp.Groware.DtoModel.csproj" />
+    <ProjectReference Include="..\TodoApp.Groware.Entidades\TodoApp.Groware.Entidades.csproj" />
+    <ProjectReference Include="..\TodoApp.Groware.Negocio\TodoApp.Groware.Negocio.csproj" />
+    <ProjectReference Include="..\TodoApp.Groware.Utils\TodoApp.Groware.Utils.csproj" />
+  </ItemGroup>
+
+</Project>
