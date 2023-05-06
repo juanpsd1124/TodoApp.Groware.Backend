@@ -92,11 +92,15 @@ namespace TodoApp.Groware.Negocio.Tareas
             {
                 var result = _unitOfWork.Tareas.EliminarTarea(id);
                 response.Data = result;
-                
-                if (response.Data != null)
+
+                if (response.Data == true)
                 {
                     response.IsSuccess = true;
                     response.Message = "Tarea eliminada exitosamente";
+                }
+                else {
+                    response.IsSuccess = false;
+                    response.Message = "No se encontro tarea";
                 }
             }
             catch (Exception e)

@@ -79,7 +79,12 @@ namespace TodoApp.Groware.Datos.Repositorios.Implementaciones
                 var parameters = new DynamicParameters();
                 parameters.Add("idTarea", idTarea);
                 var result = connection.Execute(query, param: parameters, commandType: CommandType.StoredProcedure);
-                return result > 0 ;
+
+                if (result != 0) 
+                {
+                    return true;
+                }
+                return false;
             } 
         }
     }

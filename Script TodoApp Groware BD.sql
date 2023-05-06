@@ -93,7 +93,7 @@ AS
 		   Tareas.fechaInicio AS FechaInicio,
 		   Tareas.fechaFinal AS FechaFinal
 	FROM Tareas
-	INNER JOIN Estados ON Tareas.estadoTarea = Estados.idEstado WHERE idTarea = @idTarea
+	INNER JOIN Estados ON Tareas.estadoTarea = Estados.idEstado WHERE Tareas.idTarea = @idTarea
 GO
 
 -- EXEC ModificarTarea 1,'Titulo Modificado', 'Descripcion Modificada', 'Juan', 2, 32, 'Horas', '2023-05-04 12:00:00' , '2023-05-04 18:00:00' 

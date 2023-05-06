@@ -44,7 +44,7 @@ namespace TodoApp.Groware.WebApi.Controllers
             return BadRequest(response.Message);
         }
 
-        [HttpPost("ModificarTarea")]
+        [HttpPut("ModificarTarea")]
         public IActionResult ObtenerTareas([FromBody] ModificarTareaDto tarea)
         {
             if (tarea == null)
@@ -61,7 +61,7 @@ namespace TodoApp.Groware.WebApi.Controllers
 
         }
 
-        [HttpPost("EliminarTarea/{idTarea}")]
+        [HttpDelete("EliminarTarea/{idTarea}")]
         public IActionResult EliminarTarea(string idTarea) 
         {
             if (idTarea == null)
